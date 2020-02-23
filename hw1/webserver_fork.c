@@ -1,12 +1,17 @@
-#include<unp.h>
 #include<netinet/in.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
 #include<netdb.h>
 #include<string.h>
 #include<arpa/inet.h>
 #include<sys/stat.h>
+#include<sys/wait.h>
+#include<sys/types.h>
 #include<sys/sendfile.h>
 #include<fcntl.h>
-
+#define SA struct sockaddr
 //設定網頁
 char webpage[]=                                            
 "HTTP/1.1 200 OK\r\n"
@@ -22,6 +27,7 @@ void sigChid(int sig){  //signal function,clean zombie
 	pid_t pid;
  	int stat;
  	while((pid=waitpid(-1,&stat,WNOHANG))>0){
+//	wait(&stat);	
 		printf("kill zombie\n");
 	}
 }
@@ -51,7 +57,7 @@ int main(int argc,char **argv){
 
 	bind(sockfd,(SA*)&serv_addr,sizeof(serv_addr));
 
-	if((listen(sockfd,LISTENQ))<0)
+	if((listen(sockfd,0))<0)
 		printf("listen erre!\n");
 
 	cli_len=sizeof(cli_addr);
@@ -59,28 +65,31 @@ int main(int argc,char **argv){
 	for( ; ; ){
 		if((connectfd=accept(sockfd,(SA*)&cli_addr,&cli_len))<0)
 			printf("connect error!\n");
-
-			if((pid=fork())<0)           //new process
+		else{
+			if((pid=fork())<0)   {        //new process
 				printf("fork error!\n");
+				exit(1);
+			}
 
 			if(pid==0){
 				close(sockfd);                              //child close sockfd
 				memset(buffer,0,2048);                      //initialized
 				read(connectfd,buffer,2047);                //read request
 				if(!strncmp(buffer,"GET /favicon.jpg",16)){ //GET request
-				fdimg=open("favicon.jpg",O_RDONLY);
-        			sendfile(connectfd,fdimg,NULL,fsize("favicon.jpg"));
-        			close(fdimg);
+					fdimg=open("favicon.jpg",O_RDONLY);
+        				sendfile(connectfd,fdimg,NULL,fsize("favicon.jpg"));
+        				close(fdimg);
        				}
        				else{
-        			write(connectfd,webpage,sizeof(webpage)-1); //write website
+        				write(connectfd,webpage,sizeof(webpage)-1); //write website
        				}
        				close(connectfd); 
        				exit(0);      //exit child process
-    				}
+    			}
    			else{
     				close(connectfd); //parent close connectfd
    			}
+		}
  	}
 return 0;
 } 

@@ -1,0 +1,14 @@
+this program is a simple webserver.
+
+how to compile:
+	1.make clean 
+	2.make
+
+how to execute :
+	sudo ./webserver_select
+	sudo ./webserver_fork
+	
+	After executing program,you can open any browser you like.
+	Then you can type "http://127.0.0.1"	to connect this program.
+
+use "sudo" because listen at port 80

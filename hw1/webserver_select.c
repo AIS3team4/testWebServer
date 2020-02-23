@@ -1,4 +1,9 @@
-#include<unp.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<signal.h>
+#include<sys/wait.h>
+#include<sys/types.h>
 #include<netinet/in.h>
 #include<netdb.h>
 #include<string.h>
@@ -6,6 +11,7 @@
 #include<sys/stat.h>
 #include<sys/sendfile.h>
 #include<fcntl.h>
+#define SA struct sockaddr
 
 
 //set webpage
@@ -49,7 +55,7 @@ int main(int argc,char **argv)
 
  	bind(listenfd,(SA*)&serv_addr,sizeof(serv_addr));
 
- 	if((listen(listenfd,LISTENQ))<0)
+ 	if((listen(listenfd,0))<0)
    		printf("listen erre!\n");
  
 	maxfd=listenfd;
@@ -75,7 +81,7 @@ int main(int argc,char **argv)
     				if(client[i]<0){
         				client[i]=connectfd;	//save 可用的連線
         				break;
-     			}
+     				}
   			}
   			if(i==FD_SETSIZE)
     				printf("too many clients");
@@ -97,11 +103,11 @@ int main(int argc,char **argv)
 
 			if(FD_ISSET(sockfd,&rset)){
 				memset(buffer,0,2048); 	//initialized
-			if((n=read(sockfd,buffer,2047))==0){  //檢查client是否關閉
-				close(sockfd);
-				FD_CLR(sockfd,&rset);
-				client[i]=-1;
-			}
+				if((n=read(sockfd,buffer,2047))==0){  //檢查client是否關閉
+					close(sockfd);
+					FD_CLR(sockfd,&rset);
+					client[i]=-1;
+				}
 			else{
 				if(!strncmp(buffer,"GET /favicon.jpg",16)){ 	//web request
         				fdimg=open("favicon.jpg",O_RDONLY);
