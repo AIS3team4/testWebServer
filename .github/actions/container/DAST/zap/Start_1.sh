@@ -4,7 +4,9 @@ ls -al
 cd /github/workspace
 ls -la
 make
+
 ./webserver_fork 8080 &
+cat /etc/hosts
 /zap/zap-baseline.py -t http://localhost:8080/index.html > /tmp/testreport.html
 #python3 $CHECKER/check.py /tmp/testreport.html
 kill %1
