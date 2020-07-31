@@ -27,4 +27,4 @@ services:
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/github/workspace/checker'
         entrypoint:
             - 'bash'
-            - '/checker/Start.sh'
+            - '/github/workspace/checker/Start.sh'
