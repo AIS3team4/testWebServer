@@ -18,12 +18,12 @@ jobs:
     - name: filter
       run: |
         python3 check_risk.py
-    - name: make
+  #  - name: make
+  #    run: |
+  #      make
+  #  - name: unit_test
+  #    run: |
+  #      make test
+    - name: dockerCompose
       run: |
-        make
-    - name: unit_test
-      run: |
-        make test
-   #- name: dockerCompose
-     #run: |
-     #  docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up --build --exit-code-from dockeremu
+       docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up --build --exit-code-from dockeremu
