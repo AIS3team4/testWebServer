@@ -10,5 +10,9 @@ services:
         volumes:
             - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
+            # - './fold/home/runner/work/testWebServer/:/github/workspace'
+            # - './fold/home/runner/work/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
         entrypoint:
-            - /bin/sh checker/UniteTest.sh
+            - 'ls'
+            - '-al'
+            # - 'checker/UniteTest.sh'
