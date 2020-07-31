@@ -1,7 +1,7 @@
 name: C/C++ CI
 
 on:
-  pull:
+  push:
     branches: [ master ]
 
 jobs:
