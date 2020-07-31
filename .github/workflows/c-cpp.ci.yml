@@ -19,4 +19,4 @@ jobs:
         pwd
     - name: dockerCompose
       run: |
-        docker-compose -f docker-compose.yml up
+        docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up
