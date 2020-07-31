@@ -5,10 +5,11 @@ pattern = 'err*'
 import re
 import sys
 
-f  = sys.argv[-1]
-if f ==None:
+fname  = sys.argv[-1]
+if fname ==None:
     print("file not found **********")
 p = re.compile(pattern, re.IGNORECASE)
+f = open(fname)
 content = f.read().decode("utf8")
 f.close()
 if p.match(content) != None:
