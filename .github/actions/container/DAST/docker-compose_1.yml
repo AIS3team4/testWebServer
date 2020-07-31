@@ -13,6 +13,6 @@ services:
         entrypoint:
             - 'bash'
             - '/zap/checker/Start_1.sh'
-        extra_host:
+        extra_hosts:
             - "localhost:127.0.0.1"
 
