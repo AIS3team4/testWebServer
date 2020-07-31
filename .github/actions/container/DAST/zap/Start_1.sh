@@ -1,6 +1,6 @@
 #!/bin/bash
 export
-ls -al /
-echo $URL
-/zap/zap-baseline.py -t $URL > /tmp/testreport.html
+ls -al 
+whoami
+/zap/zap-baseline.py -t http://172.28.0.4:8080 > /tmp/testreport.html
 python3 $CHECKER/check.py /tmp/testreport.html

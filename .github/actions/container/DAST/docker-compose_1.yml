@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.8'
 services:
     zap:
         depends_on:
@@ -6,12 +6,10 @@ services:
         build: ./zap
         container_name: zap
         working_dir: /zap
-        #links:
-        #- 'web:web'
         environment:
-            PATH: "/bin:/usr/bin/"
-            CHECKER: "/zap/checker"
-            URL: "http://web:8080"
+            - PATH=/bin:/usr/bin/
+            - CHECKER=/zap/checker
+              #URL: "http://web:8080"
               #- WEB_PORT= 8080
         volumes:
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/zap/:/zap/checker'
@@ -28,7 +26,7 @@ services:
         environment:
             - PATH=/bin:/usr/bin/
             - CHECKER=/github/workspace/checker
-            - PORT=800000
+            - PORT=8080
         volumes:
             - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/github/workspace/checker'
@@ -40,7 +38,6 @@ services:
             - '/github/workspace/checker/Start.sh'
 networks:
     ithelp_application:
-        driver: bridge
         ipam:
             driver: default
             config:
