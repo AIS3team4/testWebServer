@@ -1,17 +1,18 @@
 version: '3.3'
-dockeremu:
-    build: .
-    container_name: dockerEmu
-    working_dir: /github/workspace
-    environment:
-        - PATH=/bin:/usr/bin/
-        - CHECKER=/github/workspace/checker
-    volumes:
-        - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
-        - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
-        # - './fold/home/runner/work/testWebServer/:/github/workspace'
-        # - './fold/home/runner/work/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
-    entrypoint:
-        - 'bash'
-        - 'checker/UniteTest.sh'
+services:
+    dockeremu:
+        build: .
+        container_name: dockerEmu
+        working_dir: /github/workspace
+        environment:
+            - PATH=/bin:/usr/bin/
+            - CHECKER=/github/workspace/checker
+        volumes:
+            - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
+            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
+            # - './fold/home/runner/work/testWebServer/:/github/workspace'
+            # - './fold/home/runner/work/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
+        entrypoint:
+            - 'bash'
+            - 'checker/UniteTest.sh'
             
