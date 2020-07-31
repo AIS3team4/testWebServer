@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+    dockeremu:
+        build: ./testWebServer/.github/actions/container
+        container_name: dockerEmu
+        working_dir: /github/workspace
+        environment:
+            - PATH=/bin:/usr/bin/
+        volumes:
+            - './fold/var/run/docker.sock:/var/run/docker.sock'
+            - './fold/home/runner/work/_temp/_github_home:/github/home'
+            - './fold/home/runner/work/_temp/_github_workflow:/github/workflow'
+            - './fold/home/runner/work/testWebServer/:/github/workspace'
+        entrypoint:
+            - pwd

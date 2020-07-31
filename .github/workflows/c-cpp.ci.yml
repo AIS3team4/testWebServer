@@ -11,7 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: testDockerImage
-      uses: ./.github/actions/container/UniteTest
-      with:
-        entryPoint: ls -al
+    - name: ls
+      run: |
+        ls
+    - name: dockerCompose
+      run: |
+        docker-compose -f  ./.github/actions/container/UniteTest/docker-compose.yml up
