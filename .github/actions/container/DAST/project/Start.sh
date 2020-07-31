@@ -2,4 +2,5 @@
 export
 make
 # ./webserver_fork
-python3 -m http.server 80
+echo "*********************** Start Waiting ***********************"
+python3 -m http.server 0.0.0.0:8080
