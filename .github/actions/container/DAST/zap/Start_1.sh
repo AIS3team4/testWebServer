@@ -1,6 +1,8 @@
 #!/bin/bash
 export
-ls -al 
-whoami
-/zap/zap-baseline.py -t http://172.28.0.4:8080 > /tmp/testreport.html
+ls -al /github/workspace
+/github/workspace/make
+/github/workspace/webserver_fork 8080 &
+/zap/zap-baseline.py -t http://localhost:8080 > /tmp/testreport.html
 python3 $CHECKER/check.py /tmp/testreport.html
+kill %1
