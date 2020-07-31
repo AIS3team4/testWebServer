@@ -3,7 +3,7 @@ services:
     zap:
         build: ./zap
         container_name: zap
-        working_dir: /github/workspace
+        working_dir: /zap
         environment:
             - PATH=/bin:/usr/bin/
             - CHECKER=/zap/checker
