@@ -19,7 +19,7 @@ services:
             - CDnetwork
         entrypoint:
             - 'bash'
-            - '/zap/checker/Start.sh'
+            - '/zap/checker/Start_1.sh'
     web:
         build: ./project
         container_name: web
