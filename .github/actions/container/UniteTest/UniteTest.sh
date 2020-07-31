@@ -1,4 +1,4 @@
 #!/bin/bash
 make test
 file webserver_fork > ./result.txt
-python3 .github/container/UniteTest/check.py ./result.txt
+python3 $CHECKER/check.py ./result.txt

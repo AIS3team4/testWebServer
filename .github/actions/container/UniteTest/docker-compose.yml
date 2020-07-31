@@ -6,10 +6,9 @@ services:
         working_dir: /github/workspace
         environment:
             - PATH=/bin:/usr/bin/
+            - CHECKER=/github/workspace/checker
         volumes:
-            - './fold/var/run/docker.sock:/var/run/docker.sock'
-            - './fold/home/runner/work/_temp/_github_home:/github/home'
-            - './fold/home/runner/work/_temp/_github_workflow:/github/workflow'
-            - './fold/home/runner/work/testWebServer/:/github/workspace'
+            - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
+            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
         entrypoint:
-            - bash .github/actions/container/UniteTest/UniteTest.sh
+            - bash checker/UniteTest.sh
