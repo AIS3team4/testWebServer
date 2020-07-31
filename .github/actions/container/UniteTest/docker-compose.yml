@@ -13,7 +13,6 @@ services:
             # - './fold/home/runner/work/testWebServer/:/github/workspace'
             # - './fold/home/runner/work/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
         entrypoint:
-            - 'ls'
-            - '-al'
-            - 'checker'
+            - 'bash'
+            - 'checker/UniteTest.sh'
             # - 'checker/UniteTest.sh'
