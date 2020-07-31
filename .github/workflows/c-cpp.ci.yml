@@ -14,4 +14,4 @@ jobs:
     - name: testDockerImage
       uses: ./.github/actions/container/UniteTest
       with:
-        entryPoint: ls
+        entryPoint: ls -al
