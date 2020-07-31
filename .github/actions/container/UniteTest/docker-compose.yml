@@ -11,4 +11,4 @@ services:
             - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
         entrypoint:
-            - ifconfig
+            - ls /bin/bash
