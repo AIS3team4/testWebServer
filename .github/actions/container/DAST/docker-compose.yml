@@ -10,7 +10,7 @@ services:
             - 'web:web'
         environment:
             - PATH=/bin:/usr/bin/
-            - CHECKER=/zap/checker/
+            - CHECKER=/zap/checker
         volumes:
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/zap/:/zap/checker'
         entrypoint:
@@ -22,7 +22,7 @@ services:
         working_dir: /github/workspace
         environment:
             - PATH=/bin:/usr/bin/
-            - CHECKER=/github/workspace/checker/
+            - CHECKER=/github/workspace/checker
             - PORT=800000
         volumes:
             - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
