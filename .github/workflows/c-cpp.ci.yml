@@ -17,6 +17,10 @@ jobs:
     - name: pwd
       run: |
         pwd
+    # - name: cppcheck
+    #   uses: deep5050/cppcheck-action@master
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN}}
     - name: dockerCompose
       run: |
         docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up
