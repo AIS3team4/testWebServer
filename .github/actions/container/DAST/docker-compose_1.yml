@@ -15,10 +15,11 @@ services:
             - WEB_PORT= 8080
         volumes:
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/zap/:/zap/checker'
-        network:
+        networks:
             - CDnetwork
         entrypoint:
             - 'bash'
+            - 'ifconfig'
             - '/zap/checker/Start.sh'
     web:
         build: ./project
@@ -31,10 +32,11 @@ services:
         volumes:
             - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/github/workspace/checker'
-        network:
+        networks:
             - CDnetwork
         entrypoint:
             - 'bash'
+            - 'ifconfig'
             - '/github/workspace/checker/Start.sh'
 networks:
     CDnetwork:
