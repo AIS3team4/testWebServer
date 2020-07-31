@@ -10,3 +10,5 @@ webserver_select.o:webserver_select.c
 	gcc -c webserver_select.c
 clean:
 	rm -f webserver_fork webserver_select *.o *.out
+test:
+	all
