@@ -12,4 +12,4 @@ services:
             - './fold/home/runner/work/_temp/_github_workflow:/github/workflow'
             - './fold/home/runner/work/testWebServer/:/github/workspace'
         entrypoint:
-            - bash -c "ls -al"
+            - bash
