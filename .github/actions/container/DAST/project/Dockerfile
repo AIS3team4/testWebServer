@@ -1,2 +1,2 @@
 FROM ubuntu:bionic
-RUN apt update && apt install -y build-essential nc
+RUN apt update && apt install -y build-essential ncat
