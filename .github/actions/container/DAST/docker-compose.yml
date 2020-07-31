@@ -21,6 +21,7 @@ services:
         environment:
             - PATH=/bin:/usr/bin/
             - CHECKER=/checker/
+            - PORT=80
         volumes:
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/checker'
         entrypoint:
