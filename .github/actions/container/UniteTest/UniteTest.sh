@@ -1,4 +1,4 @@
 #!/bin/bash
+ls
 make test
-file webserver_fork > ./result.txt
-python $CHECKER/check.py ./result.txt
+python $CHECKER/check.py test_report.txt
