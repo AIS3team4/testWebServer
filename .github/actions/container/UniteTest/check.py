@@ -7,7 +7,7 @@ import sys
 
 f  = sys.argv[-1]
 if f ==None:
-    print("file not found")
+    print("file not found **********")
 p = re.compile(pattern, re.IGNORECASE)
 content = f.read().decode("utf8")
 f.close()
