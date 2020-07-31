@@ -2,7 +2,7 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ * ]
 
 jobs:
   build:
@@ -17,13 +17,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN}}
     - name: filter
       run: |
-        python3 check_risk.py
-  #  - name: make
-  #    run: |
-  #      make
-  #  - name: unit_test
-  #    run: |
-  #      make test
+        python3 .github/actions/scripts/check_risk.py
     - name: dockerCompose
       run: |
-       docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up --build --exit-code-from dockeremu
+        docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up --build --exit-code-from dockeremu

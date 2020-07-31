@@ -21,7 +21,7 @@ for line in fd:
         print(risk)
         if(int(risk[2])>=1000):
             print("your program is too risk")
-            sys.exit(-1)
+            sys.exit(1)
         else:
             print("pass")
             sys.exit(0)

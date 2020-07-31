@@ -1,8 +1,8 @@
+#!/usr/bin/python3
 import sys
-file_name="unit_test_report"
+file_name=sys.argv[-1]
 
 fd=open(file_name,"r")
-
 for line in fd:
     if "Fail" in line:
         print("fail the unit test")
