@@ -5,42 +5,14 @@ services:
             - web
         build: ./zap
         container_name: zap
-        working_dir: /zap
-        environment:
-            - PATH=/bin:/usr/bin/
-            - CHECKER=/zap/checker
-              #URL: "http://web:8080"
-              #- WEB_PORT= 8080
-        volumes:
-            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/zap/:/zap/checker'
-            - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
-        networks:
-            ithelp_application:
-                ipv4_address: 172.28.0.2
-        entrypoint:
-            - 'bash'
-            - '/zap/checker/Start_1.sh'
-    web:
-        build: ./project
-        container_name: web
         working_dir: /github/workspace
         environment:
             - PATH=/bin:/usr/bin/
-            - CHECKER=/github/workspace/checker
-            - PORT=8080
+            - CHECKER=/zap/checker
         volumes:
+            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/zap/:/zap/checker'
             - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
-            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/github/workspace/checker'
-        networks:
-            ithelp_application:
-                ipv4_address: 172.28.0.4
         entrypoint:
             - 'bash'
-            - '/github/workspace/checker/Start.sh'
-networks:
-    ithelp_application:
-        ipam:
-            driver: default
-            config:
-                - subnet: 172.28.0.0/16
-                  # gateway: 172.28.0.1
+            - '/zap/checker/Start_1.sh'
+
