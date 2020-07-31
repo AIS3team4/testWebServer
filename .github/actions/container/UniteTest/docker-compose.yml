@@ -1,7 +1,7 @@
 version: '3.3'
 services:
     dockeremu:
-        build: ./testWebServer/.github/actions/container
+        build: .
         container_name: dockerEmu
         working_dir: /github/workspace
         environment:
