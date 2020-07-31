@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-pattern = 'err*'
+pattern = '\d*?err'
 
 import re
 import sys
