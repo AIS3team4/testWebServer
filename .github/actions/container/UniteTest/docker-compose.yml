@@ -13,10 +13,6 @@ services:
             # - './fold/home/runner/work/testWebServer/:/github/workspace'
             # - './fold/home/runner/work/testWebServer/.github/actions/container/UniteTest/:/github/workspace/checker'
         entrypoint:
-            - 'find'
-            - '/'
-            - '-name'
-            - 'python3'
-            # - 'bash'
-            # - 'checker/UniteTest.sh'
+            - 'bash'
+            - 'checker/UniteTest.sh'
             
