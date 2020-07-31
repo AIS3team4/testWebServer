@@ -1,8 +1,7 @@
 name: C/C++ CI
 
 on:
-  pull:
-  # push:
+  push:
     branches: [ master ]
 
 jobs:
@@ -20,4 +19,4 @@ jobs:
         pwd
     - name: dockerCompose
       run: |
-        docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up --build --exit-code-from dockeremu
+        docker-compose -f .github/actions/container/DAST/docker-compose.yml up --build --exit-code-from zap

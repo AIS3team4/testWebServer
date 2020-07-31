@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+    zap:
+        build: ./zap
+        container_name: zap
+        working_dir: /
+        links:
+            - 'web:web'
+        environment:
+            - PATH=/bin:/usr/bin/
+            - CHECKER=/checker/
+        volumes:
+            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/zap/:/checker'
+        entrypoint:
+            - 'bash'
+            - '/checker/Start.sh'
+    web:
+        build: ./project
+        container_name: web
+        working_dir: /
+        environment:
+            - PATH=/bin:/usr/bin/
+            - CHECKER=/checker/
+        volumes:
+            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/checker'
+        entrypoint:
+            - 'bash'
+            - '/checker/Start.sh'
