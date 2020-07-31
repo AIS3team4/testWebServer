@@ -10,4 +10,4 @@ clean:
 	rm -f webserver_fork *.o 
 
 test:all
-	echo "kasdnaksncknjc" > test_report.txt
+	echo "1 err" > test_report.txt

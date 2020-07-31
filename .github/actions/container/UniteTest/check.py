@@ -1,20 +1,17 @@
 #!/usr/bin/python3
 
-pattern = r'\d*?err'
+pattern = r'\d*? err'
 
 import re
 import sys
 
 fname  = sys.argv[-1]
-if fname ==None:
-    print("file not found **********")
 p = re.compile(pattern, re.IGNORECASE)
 f = open(fname)
 content = f.read()
 f.close()
+print(content)
 if p.match(content) != None:
-    print("err exit")
     sys.exit(1)
 else:
-    print("exit")
     sys.exit(0)
