@@ -15,4 +15,5 @@ services:
         entrypoint:
             - 'ls'
             - '-al'
+            - 'checker'
             # - 'checker/UniteTest.sh'
