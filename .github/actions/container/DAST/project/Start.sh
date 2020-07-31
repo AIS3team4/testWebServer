@@ -1,6 +1,7 @@
 #!/bin/bash
 export
+ls
 make
-# ./webserver_fork
-echo "*********************** Start Waiting ***********************"
-python3 -m http.server 0.0.0.0:8080
+IP=127.0.0.1
+PORT=8080
+./webserver_fork 8080

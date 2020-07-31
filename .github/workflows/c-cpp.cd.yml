@@ -19,7 +19,4 @@ jobs:
         pwd
     - name: dockerCompose
       run: |
-        docker-compose -f .github/actions/container/DAST/docker-compose.yml up --build 
-        
-        
-        # --exit-code-from zap
+        docker-compose -f .github/actions/container/DAST/docker-compose.yml up --build --exit-code-from zap

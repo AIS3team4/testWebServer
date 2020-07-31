@@ -142,7 +142,7 @@ char* proccess(struct http_action* act,int *s){
 				}
 
 				*s=total_size;
-			
+				output[total_size]='\0';	
 				printf("response : %s\n",output);
                         	close(fd);
 			}
@@ -156,21 +156,15 @@ char* proccess(struct http_action* act,int *s){
 				*s=f_size;
 				output=(char*)malloc((f_size)*sizeof(char));
 				output[0]='\0';
-				/*while((n=read(fd,output,f_size))>0){
-					output+=n;
-					f_size-=n;
-				}*/
 
 				read(fd,output,f_size);
-				//write(connectfd,output,f_size);
-				//sendfile(connectfd,fd,NULL,f_size);
 				close(fd);
 			}
 			return output;
 		}
 	}
 	else{
-
+		printf("error!\n");
 		//TODO error handle
 	}
 }
@@ -190,6 +184,7 @@ char* p(int connectfd,int *s){
 		*s=size;
       	}
        	else{
+		printf("error!\n");
                                         //TODO error handle
     	}
 
