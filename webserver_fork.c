@@ -11,9 +11,9 @@ int main(int argc,char **argv){
 
 	if((sockfd=socket(AF_INET,SOCK_STREAM,0))<0)
 		printf("socket error!\n");
-
+	printf("port : %d\n",atoi(argv[1]));
 	serv_addr.sin_family=AF_INET;  //set family
-	serv_addr.sin_port=htons(80);  //set port
+	serv_addr.sin_port=htons(atoi(argv[1]));  //set port
 	serv_addr.sin_addr.s_addr=htonl(INADDR_ANY);  //set 可接收的addr
 
 	bind(sockfd,(SA*)&serv_addr,sizeof(serv_addr));

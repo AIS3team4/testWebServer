@@ -12,12 +12,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: ls
-      run: |
-        ls -al
-    - name: pwd
-      run: |
-        pwd
-    - name: dockerCompose
-      run: |
-        docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up --build --exit-code-from dockeremu
+    - name: flawfinder-action
+        uses: deep5050/flawfinder-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+    - name: filter
+        run: |
+          python3 check_risk.py
+    - name: make
+        run: |
+          make
+    - name: unit_test
+        run: |
+          make test
+   #- name: dockerCompose
+     #run: |
+     #  docker-compose -f .github/actions/container/UniteTest/docker-compose.yml up --build --exit-code-from dockeremu
