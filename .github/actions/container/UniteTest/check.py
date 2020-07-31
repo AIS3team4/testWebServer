@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-pattern = '\d*?err'
+pattern = r'\d*?err'
 
 import re
 import sys
@@ -10,7 +10,7 @@ if fname ==None:
     print("file not found **********")
 p = re.compile(pattern, re.IGNORECASE)
 f = open(fname)
-content = f.read().decode("utf8")
+content = f.read()
 f.close()
 if p.match(content) != None:
     print("err exit")
