@@ -15,9 +15,8 @@ services:
         entrypoint:
             - 'find'
             - '/'
-            - '|'
-            - 'grep'
-            - 'python'
+            - '-name'
+            - 'python3'
             # - 'bash'
             # - 'checker/UniteTest.sh'
             
