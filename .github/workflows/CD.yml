@@ -1,0 +1,23 @@
+name: che's c/c++ CD
+
+on:
+  # pull_request:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: ls
+      run: |
+        ls -al
+    - name: pwd
+      run: |
+        pwd
+    - name: dockerCompose
+      run: |
+        docker-compose -f .github/actions/container/DAST/docker-compose_1.yml up --build --exit-code-from zap
