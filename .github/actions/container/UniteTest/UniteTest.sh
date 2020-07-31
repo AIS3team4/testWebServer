@@ -1,5 +1,5 @@
 #!/bin/bash
 PATH=/bin:/usr/bin
-make test
-file webserver_fork > ./result.txt
-python3 $CHECKER/check.py ./result.txt
+/bin/make test
+/bin/file webserver_fork > ./result.txt
+/usr/bin/python3 checker/check.py ./result.txt
