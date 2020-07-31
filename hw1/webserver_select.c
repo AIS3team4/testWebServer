@@ -100,7 +100,6 @@ int main(int argc,char **argv)
   		for(i=0;i<=maxi;i++){
 			if((sockfd=client[i])<0)
 				continue;
-
 			if(FD_ISSET(sockfd,&rset)){
 				memset(buffer,0,2048); 	//initialized
 				if((n=read(sockfd,buffer,2047))==0){  //檢查client是否關閉
@@ -108,7 +107,7 @@ int main(int argc,char **argv)
 					FD_CLR(sockfd,&rset);
 					client[i]=-1;
 				}
-			else{
+				else{
 				if(!strncmp(buffer,"GET /favicon.jpg",16)){ 	//web request
         				fdimg=open("favicon.jpg",O_RDONLY);
         				sendfile(sockfd,fdimg,NULL,fsize("favicon.jpg"));
@@ -116,11 +115,11 @@ int main(int argc,char **argv)
        				}
        				else{
 					
-       					write(sockfd,webpage,sizeof(webpage)-1); //write webpage
+       					write(sockfd,webpage,sizeof(webpage)); //write webpage
        			
 				}
-			}
-			if(--nready<=0)	////檢查是否還有連線
+				}
+				if(--nready<=0)	////檢查是否還有連線
 				break;	
 			}		
   		}
