@@ -9,8 +9,8 @@ services:
         #links:
         #- 'web:web'
         environment:
-            - PATH=/bin:/usr/bin/
-            - CHECKER=/zap/checker
+            PATH: "/bin:/usr/bin/"
+            CHECKER: "/zap/checker"
             URL: "http://web:8080"
               #- WEB_PORT= 8080
         volumes:
