@@ -25,5 +25,6 @@ services:
         volumes:
             - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/checker'
         entrypoint:
-            - 'bash'
-            - '/checker/Start.sh'
+            - 'env'
+            # - 'bash'
+            # - '/checker/Start.sh'
