@@ -1,8 +1,6 @@
 version: '3.8'
 services:
     zap:
-        depends_on:
-            - web
         build: ./zap
         container_name: zap
         working_dir: /github/workspace
