@@ -3,8 +3,6 @@ name: C/C++ CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -12,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: echo
-        run: | 
-          echo "hello !"
+    - uses: actions/checkout@v2
+    - name: testDockerImage
+      uses: ./.github/actions/container/UniteTest
+      with:
+        entryPoint: ls
