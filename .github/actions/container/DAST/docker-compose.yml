@@ -3,7 +3,7 @@ services:
     zap:
         build: ./zap
         container_name: zap
-        working_dir: /
+        working_dir: /checker
         links:
             - 'web:web'
         environment:
@@ -17,13 +17,14 @@ services:
     web:
         build: ./project
         container_name: web
-        working_dir: /
+        working_dir: /github/workspace
         environment:
             - PATH=/bin:/usr/bin/
-            - CHECKER=/checker/
-            - PORT=80
+            - CHECKER=/github/workspace/checker/
+            - PORT=800000
         volumes:
-            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/checker'
+            - '/home/runner/work/testWebServer/testWebServer:/github/workspace'
+            - '/home/runner/work/testWebServer/testWebServer/.github/actions/container/DAST/project/:/github/workspace/checker'
         entrypoint:
             - 'bash'
             - '/checker/Start.sh'
