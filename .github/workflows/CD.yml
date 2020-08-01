@@ -29,6 +29,8 @@ jobs:
         docker pull owasp/zap2docker-weekly
     - name: dockerCompose
       run: |
-        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t https://localhost:80 -g gen.conf -r testreport.html
+        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t http://localhost:80/index.html -g gen.conf -r testreport.html
+    - name: cat
+      run: |    
         cat testreport.html
               #docker-compose -f .github/actions/container/DAST/docker-compose_1.yml up --build --exit-code-from zap
