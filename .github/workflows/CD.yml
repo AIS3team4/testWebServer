@@ -29,7 +29,7 @@ jobs:
         docker pull owasp/zap2docker-weekly
     - name: dockerCompose
       run: |
-        docker run -v $(pwd):/zap/wrk/:rw --net=host -t owasp/zap2docker-weekly zap-baseline.py -t http://localhost:8080/index.html -r testreport.html
+        docker run -v ~/:/zap/wrk/:rw --net=host -t owasp/zap2docker-weekly zap-baseline.py -t http://localhost:8080/index.html -r testreport.html
     - name: cat
       run: |    
         cat testreport.html
