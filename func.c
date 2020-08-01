@@ -147,17 +147,20 @@ char* proccess(struct http_action* act,int *s){
                         	close(fd);
 			}
 			else if(strstr(act->file_name,".jpg")!=NULL){
-				int fd=open(act->file_name,O_RDONLY),n;
+				int fd=open(act->file_name,O_RDONLY),n,total_size,f_size;
+				
                         	if(fd<=0){
                                 	printf("no file exist!\n");
                                 	return NULL; //maybe can change to some error page
                         	}
-                        	int f_size=fsize(act->file_name);
-				*s=f_size;
-				output=(char*)malloc((f_size)*sizeof(char));
-				output[0]='\0';
-
-				read(fd,output,f_size);
+				total_size=strlen(jpg_resp);
+				f_size=fsize(act->file_name);
+                        	total_size+=f_size;
+				*s=total_size;
+				output=(char*)malloc((total_size)*sizeof(char));
+				strcpy(output,jpg_resp);
+				
+				read(fd,output+strlen(jpg_resp),f_size);
 				close(fd);
 			}
 			return output;

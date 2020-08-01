@@ -40,7 +40,7 @@ struct http_response{
 };
 
 static char resp_header[]={"HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n"};
-
+static char jpg_resp[]={"HTTP/1.1 200 OK\r\nContent-Type: image/jpeg\r\n\r\n"};
 unsigned long fsize(char * file);
 bool parse(char*,struct http_format*);
 bool determine_action(struct http_format* ,struct http_action *);
