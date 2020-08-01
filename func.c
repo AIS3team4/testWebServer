@@ -116,6 +116,13 @@ void sigChid(int sig){  //signal function,clean zombie
 		printf("kill zombie\n");
 	}
 }
+char *make_error_resp(){
+	char* out;
+	int len=strlen(error_resp);
+	out=(char*)malloc((len+1)*sizeof(char));
+	strcpy(out,error_resp);
+	return out;
+}
 char* proccess(struct http_action* act,int *s){
 	char *output=NULL;
 	if(act->action==GET){
@@ -126,7 +133,7 @@ char* proccess(struct http_action* act,int *s){
 
 				if(fd<=0){
 					printf("no file exist!\n");
-					return NULL; //maybe can change to some error page
+					return make_error_resp(); //maybe can change to some error page
 				}
 				int f_size=fsize(act->file_name),n;
 	
@@ -151,7 +158,7 @@ char* proccess(struct http_action* act,int *s){
 				
                         	if(fd<=0){
                                 	printf("no file exist!\n");
-                                	return NULL; //maybe can change to some error page
+                                	return make_error_resp(); //maybe can change to some error page
                         	}
 				total_size=strlen(jpg_resp);
 				f_size=fsize(act->file_name);
@@ -168,6 +175,7 @@ char* proccess(struct http_action* act,int *s){
 	}
 	else{
 		printf("error!\n");
+		return make_error_resp();
 		//TODO error handle
 	}
 }
@@ -188,6 +196,7 @@ char* p(int connectfd,int *s){
       	}
        	else{
 		printf("error!\n");
+		return make_error_resp();
                                         //TODO error handle
     	}
 
