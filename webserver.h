@@ -49,5 +49,5 @@ void sigChid(int );
 char* proccess(struct http_action* ,int *);
 char* p(int ,int *);
 unsigned long fsize(char * );
-char *make_error_resp();
+char *make_error_resp(int *);
 #endif

@@ -116,15 +116,17 @@ void sigChid(int sig){  //signal function,clean zombie
 		printf("kill zombie\n");
 	}
 }
-char *make_error_resp(){
+char *make_error_resp(int* s){
 	char* out;
 	int len=strlen(error_resp);
+	*s=len;
 	out=(char*)malloc((len+1)*sizeof(char));
 	strcpy(out,error_resp);
 	return out;
 }
 char* proccess(struct http_action* act,int *s){
 	char *output=NULL;
+	int ll;
 	if(act->action==GET){
 		if(act->file_name!=NULL){
 			if(strstr(act->file_name,".html")!=NULL){
@@ -132,8 +134,10 @@ char* proccess(struct http_action* act,int *s){
 				char f_buf[2048];
 
 				if(fd<=0){
+					
 					printf("no file exist!\n");
-					return make_error_resp(); //maybe can change to some error page
+					return make_error_resp(s); //maybe can change to some error page
+
 				}
 				int f_size=fsize(act->file_name),n;
 	
@@ -158,7 +162,9 @@ char* proccess(struct http_action* act,int *s){
 				
                         	if(fd<=0){
                                 	printf("no file exist!\n");
-                                	return make_error_resp(); //maybe can change to some error page
+                                	output=make_error_resp(&ll); //maybe can change to some error page
+					*s=ll;
+					return output;
                         	}
 				total_size=strlen(jpg_resp);
 				f_size=fsize(act->file_name);
@@ -170,12 +176,28 @@ char* proccess(struct http_action* act,int *s){
 				read(fd,output+strlen(jpg_resp),f_size);
 				close(fd);
 			}
+			else{
+				printf("you can't access this file!\n");
+
+				output=make_error_resp(&ll);
+				*s=ll;
+				return output;
+			}
 			return output;
+		}
+		else{
+
+			 output=make_error_resp(&ll);
+			 *s=ll;
+			 return output;
+
 		}
 	}
 	else{
 		printf("error!\n");
-		return make_error_resp();
+		output=make_error_resp(&ll);
+		*s=ll;
+		return output;
 		//TODO error handle
 	}
 }
@@ -196,7 +218,7 @@ char* p(int connectfd,int *s){
       	}
        	else{
 		printf("error!\n");
-		return make_error_resp();
+		return make_error_resp(s);
                                         //TODO error handle
     	}
 
