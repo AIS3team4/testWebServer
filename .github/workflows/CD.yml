@@ -23,13 +23,13 @@ jobs:
         make
     - name: run
       run: |
-        ./webserver_fork 80 &
+        ./webserver_fork 8080 &
     - name: dokcerPull
       run: |
         docker pull owasp/zap2docker-weekly
     - name: dockerCompose
       run: |
-        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t http://localhost:80/index.html -g gen.conf -r testreport.html
+        docker run -v $(pwd):/zap/wrk/:rw --net=host -t owasp/zap2docker-weekly zap-baseline.py -t http://localhost:8080/index.html -g gen.conf -r testreport.html
     - name: cat
       run: |    
         cat testreport.html
