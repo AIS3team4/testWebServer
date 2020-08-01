@@ -20,15 +20,19 @@ Examining ./func.c <br>
 
 <h2>Final Results</h2>
 <ul>
-<li>./func.c:136:5: <b>  [4] </b> (buffer) <i> strcpy:Does not check for buffer overflows when copying to destination [MS-banned] (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Consider using snprintf, strcpy_s, or strlcpy (warning: strncpy easily misused).  </i>
+<li>./func.c:123:2: <b>  [4] </b> (buffer) <i> strcpy:Does not check for buffer overflows when copying to destination [MS-banned] (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Consider using snprintf, strcpy_s, or strlcpy (warning: strncpy easily misused).  </i>
+<pre>
+	strcpy(out,error_resp);
+</pre>
+<li>./func.c:143:5: <b>  [4] </b> (buffer) <i> strcpy:Does not check for buffer overflows when copying to destination [MS-banned] (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Consider using snprintf, strcpy_s, or strlcpy (warning: strncpy easily misused).  </i>
 <pre>
 				strcpy(output,resp_header);
 </pre>
-<li>./func.c:140:6: <b>  [4] </b> (buffer) <i> strcat:Does not check for buffer overflows when concatenating to destination [MS-banned] (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Consider using strcat_s, strncat, strlcat, or snprintf (warning: strncat is easily misused).  </i>
+<li>./func.c:147:6: <b>  [4] </b> (buffer) <i> strcat:Does not check for buffer overflows when concatenating to destination [MS-banned] (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Consider using strcat_s, strncat, strlcat, or snprintf (warning: strncat is easily misused).  </i>
 <pre>
 					strcat(output,f_buf);
 </pre>
-<li>./func.c:161:5: <b>  [4] </b> (buffer) <i> strcpy:Does not check for buffer overflows when copying to destination [MS-banned] (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Consider using snprintf, strcpy_s, or strlcpy (warning: strncpy easily misused).  </i>
+<li>./func.c:168:5: <b>  [4] </b> (buffer) <i> strcpy:Does not check for buffer overflows when copying to destination [MS-banned] (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Consider using snprintf, strcpy_s, or strlcpy (warning: strncpy easily misused).  </i>
 <pre>
 				strcpy(output,jpg_resp);
 </pre>
@@ -36,23 +40,23 @@ Examining ./func.c <br>
 <pre>
 	strcat(answer,h);
 </pre>
-<li>./func.c:124:12: <b>  [2] </b> (misc) <i> open:Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (<a href="https://cwe.mitre.org/data/definitions/362.html">CWE-362</a>).   </i>
+<li>./func.c:131:12: <b>  [2] </b> (misc) <i> open:Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (<a href="https://cwe.mitre.org/data/definitions/362.html">CWE-362</a>).   </i>
 <pre>
 				int fd=open(act-&gt;file_name,O_RDONLY),total_size=0;
 </pre>
-<li>./func.c:125:5: <b>  [2] </b> (buffer) <i> char:Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (<a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.  </i>
+<li>./func.c:132:5: <b>  [2] </b> (buffer) <i> char:Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (<a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.  </i>
 <pre>
 				char f_buf[2048];
 </pre>
-<li>./func.c:150:12: <b>  [2] </b> (misc) <i> open:Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (<a href="https://cwe.mitre.org/data/definitions/362.html">CWE-362</a>).   </i>
+<li>./func.c:157:12: <b>  [2] </b> (misc) <i> open:Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (<a href="https://cwe.mitre.org/data/definitions/362.html">CWE-362</a>).   </i>
 <pre>
 				int fd=open(act-&gt;file_name,O_RDONLY),n,total_size,f_size;
 </pre>
-<li>./func.c:175:2: <b>  [2] </b> (buffer) <i> char:Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (<a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.  </i>
+<li>./func.c:183:2: <b>  [2] </b> (buffer) <i> char:Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (<a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a>!/<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>).  Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.  </i>
 <pre>
 	char buffer[2048];
 </pre>
-<li>./func.c:210:11: <b>  [2] </b> (misc) <i> fopen:Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (<a href="https://cwe.mitre.org/data/definitions/362.html">CWE-362</a>).   </i>
+<li>./func.c:219:11: <b>  [2] </b> (misc) <i> fopen:Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (<a href="https://cwe.mitre.org/data/definitions/362.html">CWE-362</a>).   </i>
 <pre>
  	FILE *f=fopen(file,"r");
 </pre>
@@ -100,27 +104,31 @@ Examining ./func.c <br>
 <pre>
 				strncpy(temp1,buffer,i);
 </pre>
-<li>./func.c:133:16: <b>  [1] </b> (buffer) <i> strlen:Does not handle strings that are not \0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (<a href="https://cwe.mitre.org/data/definitions/126.html">CWE-126</a>).   </i>
+<li>./func.c:121:10: <b>  [1] </b> (buffer) <i> strlen:Does not handle strings that are not \0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (<a href="https://cwe.mitre.org/data/definitions/126.html">CWE-126</a>).   </i>
+<pre>
+	int len=strlen(error_resp);
+</pre>
+<li>./func.c:140:16: <b>  [1] </b> (buffer) <i> strlen:Does not handle strings that are not \0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (<a href="https://cwe.mitre.org/data/definitions/126.html">CWE-126</a>).   </i>
 <pre>
 				total_size=strlen(resp_header);
 </pre>
-<li>./func.c:138:14: <b>  [1] </b> (buffer) <i> read:Check buffer boundaries if used in a loop including recursive loops (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>, <a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a>).   </i>
+<li>./func.c:145:14: <b>  [1] </b> (buffer) <i> read:Check buffer boundaries if used in a loop including recursive loops (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>, <a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a>).   </i>
 <pre>
 				while((n=read(fd,f_buf,f_size))&gt;0){
 </pre>
-<li>./func.c:156:16: <b>  [1] </b> (buffer) <i> strlen:Does not handle strings that are not \0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (<a href="https://cwe.mitre.org/data/definitions/126.html">CWE-126</a>).   </i>
+<li>./func.c:163:16: <b>  [1] </b> (buffer) <i> strlen:Does not handle strings that are not \0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (<a href="https://cwe.mitre.org/data/definitions/126.html">CWE-126</a>).   </i>
 <pre>
 				total_size=strlen(jpg_resp);
 </pre>
-<li>./func.c:163:5: <b>  [1] </b> (buffer) <i> read:Check buffer boundaries if used in a loop including recursive loops (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>, <a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a>).   </i>
+<li>./func.c:170:5: <b>  [1] </b> (buffer) <i> read:Check buffer boundaries if used in a loop including recursive loops (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>, <a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a>).   </i>
 <pre>
 				read(fd,output+strlen(jpg_resp),f_size);
 </pre>
-<li>./func.c:163:20: <b>  [1] </b> (buffer) <i> strlen:Does not handle strings that are not \0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (<a href="https://cwe.mitre.org/data/definitions/126.html">CWE-126</a>).   </i>
+<li>./func.c:170:20: <b>  [1] </b> (buffer) <i> strlen:Does not handle strings that are not \0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (<a href="https://cwe.mitre.org/data/definitions/126.html">CWE-126</a>).   </i>
 <pre>
 				read(fd,output+strlen(jpg_resp),f_size);
 </pre>
-<li>./func.c:182:9: <b>  [1] </b> (buffer) <i> read:Check buffer boundaries if used in a loop including recursive loops (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>, <a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a>).   </i>
+<li>./func.c:190:9: <b>  [1] </b> (buffer) <i> read:Check buffer boundaries if used in a loop including recursive loops (<a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a>, <a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a>).   </i>
 <pre>
         read(connectfd,buffer,2048);                //read request
 </pre>
@@ -159,15 +167,15 @@ Examining ./func.c <br>
 </ul>
 <h2>Analysis Summary</h2>
 <p>
-Hits = 34
+Hits = 36
 <br>
-Lines analyzed = 392 in approximately 0.02 seconds (25282 lines/second)
+Lines analyzed = 403 in approximately 0.01 seconds (30475 lines/second)
 <br>
-Physical Source Lines of Code (SLOC) = 326
+Physical Source Lines of Code (SLOC) = 337
 <br>
-Hits@level = [0]  22 [1]  16 [2]  14 [3]   0 [4]   4 [5]   0 <br>
-Hits@level+ = [0+]  56 [1+]  34 [2+]  18 [3+]   4 [4+]   4 [5+]   0 <br>
-Hits/KSLOC@level+ = [0+] 171.779 [1+] 104.294 [2+] 55.2147 [3+] 12.2699 [4+] 12.2699 [5+]   0 <br>
+Hits@level = [0]  22 [1]  17 [2]  14 [3]   0 [4]   5 [5]   0 <br>
+Hits@level+ = [0+]  58 [1+]  36 [2+]  19 [3+]   5 [4+]   5 [5+]   0 <br>
+Hits/KSLOC@level+ = [0+] 172.107 [1+] 106.825 [2+] 56.3798 [3+] 14.8368 [4+] 14.8368 [5+]   0 <br>
 Dot directories skipped = 2 (--followdotdir overrides)
 <br>
 Minimum risk level = 1
